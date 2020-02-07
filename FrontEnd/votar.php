@@ -35,40 +35,72 @@ if (($estado_voto == 1) || ($estado_voto == 2)){
 }
 
 ?>
-
-<script type="text/javascript">
-
-  var count = new Number();
-  var count = 30;
-
-  function start(){
-
-    if (count > 0){
-      count = count - 1;
-      if (count == 0) {
-        //count = "Tempo de Voto Expirado!";
-		window.location.replace("recebe_votar_time_out.php");
-      }
-      tempo.innerHTML = count + " segundos.";
-      setTimeout('start();', 1000);
-
-    }
-  }
-
-  </script>
   
 <html>
 
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<title>Voto Online</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<style>
+		.container {
+			width: auto;
+			max-width: 680px;
+			padding: 0 15px;
+		}
+		.footer {
+			background-color: #f5f5f5;
+		}
+		img.partido {
+			-webkit-filter: grayscale(100%);
+			filter: grayscale(100%);
+			max-width:64;
+			max-height:64;
+		}
+	</style>
+	<script>
+		function ImageSecurity() {
+			$("img").mousedown(function(e){
+				e.preventDefault()
+			});
+			$('img').bind('contextmenu', function(e) {
+				return false;
+			});
+			$('#nearestStaticContainer').on('contextmenu', 'img', function(e){ 
+				return false; 
+			});
+			$("#searchresults img").mousedown(function(e){
+				e.preventDefault()
+			});
+			if (location.hash) {
+				let target = location.hash;
+				window.scrollTop = document.querySelector(target).offsetTop;
+			}
+		}
+		var count = new Number();
+		var count = 30;
 
+		function start(){
+
+			if (count > 0) {
+				count = count - 1;
+				if (count == 0) {
+					//count = "Tempo de Voto Expirado!";
+					window.location.replace("library/recebe_votar_time_out.php");
+				}
+				tempo.innerHTML = count + " segundos.";
+				setTimeout('start();', 1000);
+
+			}
+		}
+	</script>
 </head>
 
-<body onload="start();">
+<body onload="ImageSecurity(); start();" onmousedown = 'return false' onselectstart = 'return false'>
 
 <div class="container">
 
@@ -114,7 +146,7 @@ if ($result->num_rows > 0) {
         echo "<center>".$row["designacao"]."</center>";
 		echo "</td>";
 		echo "<td>";
-        echo "<center><img src=../Backend/imagens/".$row["imagem"]."></center>";
+        echo "<center><img class='partido' src=../Backend/imagens/".$row["imagem"]."></center>";
 		echo "</td>";
 		
 		echo "<td>";
@@ -123,7 +155,7 @@ if ($result->num_rows > 0) {
 		echo "</tr>";
 		}
 } else {
-    echo "0 results";
+    echo "<tr><td>0 results</td></tr>";
 }
 	
 $conn->close();
@@ -139,6 +171,10 @@ $conn->close();
    </div>
 
 </div>
+	
+<?php
+include 'rodape.php';
+?>
 
 </body>
 
