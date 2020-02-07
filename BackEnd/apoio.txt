@@ -1,0 +1,6 @@
+cd c:\xampp\mysql\bin
+mysql.exe -u root --password
+
+use eleicoes;
+
+mysql -u root -p eleicoes < C:/xampp/htdocs/2019-2020/Voto_Online/BD.sql;
