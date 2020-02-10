@@ -64,7 +64,7 @@ cod_msg($cod_msg);
             <button type="submit" class="btn btn-primary btn-block">Entrar</button>
         </div>
         <div class="clearfix">
-            <label class="pull-left checkbox-inline"><input type="checkbox" name="lembrar" <?php if(isset($_COOKIE['pwd'])){ echo 'checked="checked"'; }; ?>> Lembrar-me</label>
+            <label class="pull-left checkbox-inline"><input type="checkbox" name="lembrar" <?php if(isset($_COOKIE['usr'])){ echo 'checked="checked"'; }; ?>> Lembrar-me</label>
             <a href="#" class="pull-right">Recuperar Palavra-Chave?</a>
         </div>        
     </form>
