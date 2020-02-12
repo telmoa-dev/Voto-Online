@@ -12,9 +12,12 @@ $cod_msg = $_GET["cod_msg"];
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Voto Online</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/js/all.min.js" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tooltip.js/1.3.3/esm/tooltip.min.js" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
 <style type="text/css">
 	.login-form {
 		width: 340px;
@@ -47,17 +50,18 @@ cod_msg($cod_msg);
 ?>
 
 <div class="login-form">
-    <form action="recebe_registar.php?cod_msg=1" method="post">
-        <h2 class="text-center">Registar</h2> 
-
-	<center><button data-toggle="collapse" data-target="#demo"><span class="glyphicon glyphicon-info-sign"></span></button></center>
-
+	<form action="inc/recebe_registar.php?cod_msg=1" method="post"> <h2 class="text-center">Registar - <button data-toggle="collapse" data-target="#demo" type="button" class="btn btn-default" aria-label="Left Align"><i class="fas fa-info"></i></span></button></h2>
 	<div id="demo" class="collapse">
-	<p>NIF: Número de Identificação Fiscal.
-	<p>Palavra-Chave: tem de conter pelo menos 8 caracteres e incluir uma letra maiúscula, um número e 1 caractere especial.
-	<p>Email: tem de ser válido e único para cada NIF.
-	<p>Data de Nascimento: a idade mínima legal para votar é de 18 anos.
-	</div>	
+		<div class="card" style="width: 17rem; height: 22rem;">
+			<div class="card-body">
+				<p>NIF: Número de Identificação Fiscal.
+				<p>Palavra-Chave: tem de conter pelo menos 8 caracteres e incluir uma letra maiúscula, um número e 1 caractere especial.
+				<p>Email: tem de ser válido e único para cada NIF.
+				<p>Data de Nascimento: a idade mínima legal para votar é de 18 anos.
+			</div>
+		</div>
+	</div>
+	
 	<br>
 		
         <div class="form-group">
